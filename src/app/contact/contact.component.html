@@ -1,0 +1,54 @@
+<section id="contact">
+    <div class="contact-box">
+      <div class="contact-links">
+        <h2>CONTACT</h2>
+        <div class="links">
+          <div class="link">
+            <a><img src="https://i.postimg.cc/m2mg2Hjm/linkedin.png" alt="linkedin"></a>
+          </div>
+          <div class="link">
+            <a><img src="https://i.postimg.cc/YCV2QBJg/github.png" alt="github"></a>
+          </div>
+          <div class="link">
+            <a><img src="https://i.postimg.cc/W4Znvrry/codepen.png" alt="codepen"></a>
+          </div>
+          <div class="link">
+            <a><img src="https://i.postimg.cc/NjLfyjPB/email.png" alt="email"></a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrapper">
+        <form [formGroup]="contactform" (ngSubmit)="onsubmit()" >
+          <div class="form-item">
+            <input type="text" formControlName="name" onkeypress="return /[A-Za-z ]/i.test(event.key)" required>
+            <label>Name:</label>
+          </div>
+          <div class="form-item">
+            <input type="text" formControlName="email">
+            <label>Email:</label>
+          </div>
+          <div class="form-item">
+            <input type="text" formControlName="phone" >
+            <label>COntact:</label>
+          </div>
+          <div class="form-item">
+            <input type="text" formControlName="state_id">
+            <label>State:</label>
+          </div>
+          <div class="form-item">
+            <input type="text" formControlName="city_id">
+            <label>City:</label>
+          </div>
+          <div class="form-item">
+            <input type="text" formControlName="subject">
+            <label>Subject:</label>
+          </div>
+          <div class="form-item">
+            <textarea class="" formControlName="message"></textarea>
+            <label>Message:</label>
+          </div>
+          <button type="submit" class="submit-btn">Send</button>  
+        </form>
+      </div>
+    </div>
+  </section>

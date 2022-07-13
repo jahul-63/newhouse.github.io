@@ -1,0 +1,221 @@
+
+<!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+
+    <div class="overlay" data-overlay></div>
+  
+    <div class="header-top">
+      <div class="container">
+  
+        <ul class="header-top-list">
+  
+          <li>
+            <a href="mailto:info@homeverse.com" class="header-top-link">
+              <i class="fa fa-envelope-o"></i>
+              <span>info@homeverse.com</span>
+            </a>
+          </li>
+  
+          <li>
+            <a href="#" class="header-top-link">
+              <i class="fa fa-map-o"></i>
+  
+              <address>2nd Floor, Jai Complex, Alwar</address>
+            </a>
+          </li>
+  
+        </ul>
+  
+        <div class="wrapper">
+          <ul class="header-top-social-list">
+  
+            <li>
+              <a href="#" class="header-top-social-link">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+  
+            <li>
+              <a href="#" class="header-top-social-link">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+  
+            <li>
+              <a href="#" class="header-top-social-link">
+                <!-- <ion-icon name="logo-instagram"></ion-icon> -->
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+  
+            <li>
+              <a href="#" class="header-top-social-link">
+                <!-- <ion-icon name="logo-pinterest"></ion-icon> -->
+                <i class="fa fa-pinterest"></i>
+              </a>
+            </li>
+  
+          </ul>
+  
+          <button class="header-top-btn">Add Listing</button>
+        </div>
+  
+      </div>
+    </div>
+  
+    <div class="header-bottom">
+      <div class="container">
+  
+        <a routerLink="/home" class="logo">
+          <img src="./assets/images/logo.png" alt="Homeverse logo">
+        </a>
+  
+        <nav class="navbar" data-navbar>
+  
+          <div class="navbar-top">
+  
+            <a routerLink="/home" class="logo">
+              <img src="./assets/images/logo.png" alt="Homeverse logo">
+            </a>
+  
+            <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+              <!-- <ion-icon name="close-outline"></ion-icon> -->
+              <i class="fa fa-bar"></i>
+            </button>
+  
+          </div>
+  
+          <div class="navbar-bottom">
+            <ul class="navbar-list">
+  
+              <li>
+                <a routerLink="/home" class="navbar-link" data-nav-link>Home</a>
+              </li>
+  
+              <li>
+                <a routerLink="/about" class="navbar-link" data-nav-link>About</a>
+              </li>
+  
+              <li>
+                <a routerLink="/service" class="navbar-link" data-nav-link>Service</a>
+              </li>
+  
+              <li>
+                <a routerLink="/property" class="navbar-link" data-nav-link>Property</a>
+              </li>
+  
+              <li>
+                <a routerLink="/blog" class="navbar-link" data-nav-link>Blog</a>
+              </li>
+  
+              <li>
+                <a routerLink="/contact" class="navbar-link" data-nav-link>Contact</a>
+              </li>
+              <li class="nav-item dropdown" *ngIf="isLoggedIn()">
+                <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)"
+                    style="text-transform: capitalize;"><i class="ti-user"></i> Welcome {{profileDEtail.name}}, My
+                    Account <i class="ti-angle-down"></i></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item ">My Profile</a>
+                    <a class="dropdown-item" (click)="logout()" style="cursor:pointer">
+                        Logout</a>
+                </div>
+               
+            </li>
+            </ul>
+          </div>
+  
+        </nav>
+  
+        <div class="header-bottom-actions">
+  
+          <button class="header-bottom-actions-btn" aria-label="Search">
+            <!-- <ion-icon name="search-outline"></ion-icon> -->
+            <!-- <i class="fa fa-search"  style="font-size:24px"></i> -->
+            
+            <div class = 'search-box'>
+                <input class = "search-text" type="text" placeholder = "  type location " ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"  (onAddressChange)="handleAddressChange($event)">
+                
+              <a href="#" class = "search-btn">
+                <i class="fa fa-search"></i>
+              </a>
+              
+            </div>
+
+            <!-- <span>Search</span> -->
+          </button>
+          
+  
+          <!-- <button class="header-bottom-actions-btn " aria-label="Profile"> -->
+            <!-- <ion-icon name="person-outline"></ion-icon> -->
+            <!-- <i class='fa fa-user ' style="font-size:24px" #user></i>
+            <span>Profile</span>
+          </button> -->
+          <div>
+            <input type="checkbox" id="show">
+            <button class="header-bottom-actions-btn " aria-label="Profile">
+            <label for="show" class="show-btn1"><i class="fa fa-user" style="font-size:24px"></i></label></button>
+           
+            <div class="container1 ">
+              <label for="show" class="close-btn1 fa fa-times" title="close"></label>
+              <div class="text">
+                Login Form</div>
+              <form [formGroup]="loginForm" (ngSubmit)="chkLogin()">
+                <div class="data1">
+                  <label>Email or Phone</label>
+                  <input type="text" formControlName="email_mobile">
+                </div>
+                <div class="data1">
+                  <label>Password</label>
+                  <input type="password"formControlName="password_otp">
+                </div>
+                <div class="forgot-pass">
+                  <a href="#">Forgot Password?</a>
+                </div>
+                <div class="btn1">
+                  <div class="inner">
+                  </div>
+                  <button type="submit" [disabled]="!loginForm.valid">login</button>
+                </div>
+                <div class="signup-link">
+                  Not a member? <a href="#">Signup now</a></div>
+                  <div class="loginwith"><span style="margin-top: 1px;">Or Login in With</span></div>
+                  <div class="fbgoogle">
+                    <button style="margin:0 auto ;" (click)="facebookLogin()"><i class="fa fa-facebook"></i></button>
+                    <button style="margin:0 auto ;"  (click)="googleLogin()"><i class="fa fa-google"></i></button>
+                  </div>
+              </form>
+            </div>
+            <!-- <div class="utf-social-login-separator-item"><span style="margin-top: 1px;">Or Login in With</span></div>
+            <div class="utf-social-login-buttons-block">
+              <button class="facebook-login ripple-effect" (click)="facebookLogin()"><i class="icon-brand-facebook-f"></i> Facebook</button>
+              <button class="google-login ripple-effect" (click)="googleLogin()"><i class="icon-brand-google"></i> Google</button>
+            </div> -->
+          </div>
+  
+          <button class="header-bottom-actions-btn" aria-label="Cart">
+            <i class="fa fa-shopping-cart" style="font-size:24px"></i>
+            <!-- <ion-icon name="cart-outline"></ion-icon> -->
+  
+            <span>Cart</span>
+          </button>
+  
+          <button class="header-bottom-actions-btn" data-nav-open-btn aria-label="Open Menu">
+            <!-- <ion-icon name="menu-outline"></ion-icon> -->
+            <i class="fa fa-bar" style="font-size:24px"></i>
+            <span>Menu</span>
+          </button>
+  
+        </div>
+  
+      </div>
+    </div>
+  
+  </header>
+  <!-- <app-login></app-login> -->
+  
+  
+  
